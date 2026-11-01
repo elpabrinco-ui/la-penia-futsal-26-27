@@ -140,6 +140,27 @@ tr.me td:first-child{box-shadow:inset 4px 0 0 var(--brand-text)}
 .pg{font-family:var(--display);font-size:30px;text-align:right;line-height:1}
 .pg small{display:block;font-family:var(--body);font-size:12px;color:var(--muted)}
 
+/* Rivales */
+.lock{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+.lock p{margin:0}
+.lock form{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.lock input[type=password]{flex:1 1 200px;min-width:0;font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.lock label{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);flex-basis:100%}
+.btn{font:inherit;font-weight:600;background:var(--brand);color:var(--brand-ink);border:0;border-radius:8px;padding:9px 18px}
+.btn[disabled]{opacity:.6;cursor:wait}
+.err{color:var(--loss);font-size:14px;margin:8px 0 0}
+.rival{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin-bottom:8px;overflow:hidden}
+.rival summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;font-weight:600}
+.rival summary::-webkit-details-marker{display:none}
+.rival .when{font-weight:400;font-size:13px;color:var(--muted);text-align:right}
+.rival .body{padding:0 14px 14px;border-top:1px solid var(--line);font-size:15px}
+.rival h4{margin:12px 0 4px;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.rival ul,.lock ul{margin:0;padding-left:20px}
+.rival p{margin:0 0 6px}
+.upd{font-size:13px;color:var(--muted)}
+.general{background:var(--soft);border-radius:10px;padding:12px 14px;margin-bottom:14px;font-size:15px}
+.general h4{margin:0 0 4px;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.general p{margin:0 0 6px}
 footer{border-top:1px solid var(--line);padding-block:16px 28px;font-size:13px;color:var(--muted)}
 .msg{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;margin:20px 0}
 @media (max-width:480px){.tab{font-size:20px;padding:12px 9px 8px}.mark{font-size:28px}.sub{font-size:17px}.teams{grid-template-columns:1fr}.tm.away{text-align:left}.vs{display:none}}
@@ -155,6 +176,7 @@ footer{border-top:1px solid var(--line);padding-block:16px 28px;font-size:13px;c
   <button class="tab" role="tab" id="t-tabla" aria-controls="p-tabla" aria-selected="false" data-tab="tabla">Tabla</button>
   <button class="tab" role="tab" id="t-estadisticas" aria-controls="p-estadisticas" aria-selected="false" data-tab="estadisticas">Estadísticas</button>
   <button class="tab" role="tab" id="t-plantel" aria-controls="p-plantel" aria-selected="false" data-tab="plantel">Plantel</button>
+  <button class="tab" role="tab" id="t-rivales" aria-controls="p-rivales" aria-selected="false" data-tab="rivales">Rivales</button>
 </div></nav>
 <main class="wrap">
   <section id="p-partidos" role="tabpanel" aria-labelledby="t-partidos">
@@ -169,6 +191,9 @@ footer{border-top:1px solid var(--line);padding-block:16px 28px;font-size:13px;c
   </section>
   <section id="p-plantel" role="tabpanel" aria-labelledby="t-plantel" hidden>
     <h2>Plantel</h2><div id="plist"></div>
+  </section>
+  <section id="p-rivales" role="tabpanel" aria-labelledby="t-rivales" hidden>
+    <h2>Rivales</h2><div id="lockbox"></div><div id="rivbox"></div>
   </section>
 </main>
 <footer><div class="wrap" id="foot"></div></footer>
@@ -318,11 +343,100 @@ function renderFoot(){
 }
 
 function setTab(name){
-  var ok=["partidos","tabla","estadisticas","plantel"];
+  var ok=["partidos","tabla","estadisticas","plantel","rivales"];
   if(ok.indexOf(name)<0)name="partidos";
   document.querySelectorAll(".tab").forEach(function(t){t.setAttribute("aria-selected",String(t.dataset.tab===name))});
   ok.forEach(function(n){$("#p-"+n).hidden=(n!==name)});
 }
+
+/* ---- Rivales: notas privadas cifradas (AES-GCM, clave derivada con PBKDF2) ---- */
+var RIV=null, KEYSTORE="lapena-rivales-key";
+function b64d(s){var b=atob(s),u=new Uint8Array(b.length);for(var i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u}
+function b64e(u){var s="";u=new Uint8Array(u);for(var i=0;i<u.length;i++)s+=String.fromCharCode(u[i]);return btoa(s)}
+function canCrypto(){return !!(window.crypto&&window.crypto.subtle)}
+function deriveKey(pw,blob){
+  return crypto.subtle.importKey("raw",new TextEncoder().encode(pw),"PBKDF2",false,["deriveKey"]).then(function(base){
+    return crypto.subtle.deriveKey({name:"PBKDF2",salt:b64d(blob.salt),iterations:blob.iter,hash:"SHA-256"},base,{name:"AES-GCM",length:256},true,["decrypt"]);
+  });
+}
+function openBlob(key,blob){
+  return crypto.subtle.decrypt({name:"AES-GCM",iv:b64d(blob.iv)},key,b64d(blob.ct)).then(function(buf){return JSON.parse(new TextDecoder().decode(buf))});
+}
+function forgetKey(){try{localStorage.removeItem(KEYSTORE)}catch(e){}}
+function rememberKey(key){
+  return crypto.subtle.exportKey("raw",key).then(function(raw){try{localStorage.setItem(KEYSTORE,JSON.stringify({salt:RIV.salt,key:b64e(raw)}))}catch(e){}});
+}
+function storedOpen(){
+  var s=null;try{s=JSON.parse(localStorage.getItem(KEYSTORE)||"null")}catch(e){}
+  if(!s||s.salt!==RIV.salt||!canCrypto())return Promise.resolve(null);
+  return crypto.subtle.importKey("raw",b64d(s.key),{name:"AES-GCM"},false,["decrypt"]).then(function(k){return openBlob(k,RIV)}).catch(function(){forgetKey();return null});
+}
+function fmtText(v){
+  function ul(a){return "<ul>"+a.map(function(x){return "<li>"+esc(x)+"</li>"}).join("")+"</ul>"}
+  if(Array.isArray(v))return ul(v);
+  var out="",items=[];
+  String(v==null?"":v).split("\n").forEach(function(l){
+    if(/^\s*-\s+/.test(l)){items.push(l.replace(/^\s*-\s+/,""));return}
+    if(items.length){out+=ul(items);items=[]}
+    if(l.trim())out+="<p>"+esc(l)+"</p>";
+  });
+  if(items.length)out+=ul(items);
+  return out;
+}
+function rivalNames(){return D.standings.map(function(r){return r.team}).filter(function(t){return t!==ME})}
+function rivalMatches(t){return D.fixtures.filter(function(f){return mine(f)&&(f.home===t||f.away===t)}).sort(function(a,b){return ts(a)-ts(b)})}
+function nextVs(t){var n=nowTs();return rivalMatches(t).filter(function(f){return !played(f)&&ts(f)+90*60000>=n})[0]}
+function rivalCard(t,priv){
+  var ms=rivalMatches(t), nx=nextVs(t);
+  var when=nx?"Próximo: "+dateShort(nx.date)+" · "+nx.time:"";
+  var pub="<h4>Partidos contra ellos</h4><ul>"+ms.map(function(f){
+    var res=played(f)?" · "+f.result.h+" - "+f.result.a:"";
+    return "<li>"+esc(dateShort(f.date))+", "+esc(f.time)+" · "+(f.home===ME?"Local":"Visitante")+" · "+esc(f.venue)+esc(res)+"</li>";
+  }).join("")+"</ul>";
+  var pr="";
+  var notes=priv&&priv.teams&&priv.teams[t];
+  if(notes){Object.keys(notes).forEach(function(k){pr+="<h4>"+esc(k.replace(/_/g," "))+"</h4>"+fmtText(notes[k])})}
+  else if(priv){pr='<h4>Notas privadas</h4><p class="hint" style="margin:0">Todavía no hay notas de este equipo.</p>'}
+  return '<details class="rival"><summary><span>'+esc(t)+'</span><span class="when">'+esc(when)+'</span></summary><div class="body">'+pub+pr+'</div></details>';
+}
+function renderRivales(priv){
+  var lock=$("#lockbox"), box=$("#rivbox");
+  if(!RIV){
+    lock.innerHTML='<div class="lock"><p>Esta sección va a tener notas privadas sobre cómo juega cada rival. Todavía no hay notas cargadas.</p></div>';
+  }else if(!canCrypto()){
+    lock.innerHTML='<div class="lock"><p>Este navegador no puede abrir las notas privadas. Probá con otro, desde la dirección https del sitio.</p></div>';
+  }else if(!priv){
+    lock.innerHTML='<div class="lock"><p><b>Notas privadas del plantel.</b> Escribí la contraseña que te dio Matías para ver cómo juega cada rival.</p>'+
+      '<form id="pwform"><label for="pw" class="upd" style="flex-basis:100%">Contraseña</label><input type="password" id="pw" autocomplete="off" required><button class="btn" id="pwbtn" type="submit">Abrir</button>'+
+      '<label for="remember"><input type="checkbox" id="remember"> Recordar en este dispositivo</label></form><p class="err" id="pwerr" role="alert" hidden></p></div>';
+  }else{
+    lock.innerHTML='<p class="upd">Notas privadas'+(priv.updated?' · actualizadas el '+esc(dateLong(priv.updated)):'')+' · <button class="chip" id="lockbtn" type="button">Cerrar notas</button></p>'+
+      (priv.general?'<div class="general"><h4>En general</h4>'+fmtText(priv.general)+'</div>':'');
+  }
+  var names=rivalNames().sort(function(a,b){var x=nextVs(a),y=nextVs(b);return (x?ts(x):9e15)-(y?ts(y):9e15)});
+  box.innerHTML=names.map(function(t){return rivalCard(t,priv)}).join("");
+}
+function initRivales(){
+  $("#lockbox").addEventListener("submit",function(e){
+    if(e.target.id!=="pwform")return;
+    e.preventDefault();
+    var pw=$("#pw").value, btn=$("#pwbtn"), err=$("#pwerr"), rem=$("#remember").checked;
+    if(!pw)return;
+    btn.disabled=true;btn.textContent="Abriendo…";err.hidden=true;
+    deriveKey(pw,RIV).then(function(key){
+      return openBlob(key,RIV).then(function(data){
+        return (rem?rememberKey(key):Promise.resolve()).then(function(){renderRivales(data)});
+      });
+    }).catch(function(){
+      btn.disabled=false;btn.textContent="Abrir";err.textContent="Contraseña incorrecta. Probá de nuevo.";err.hidden=false;
+    });
+  });
+  $("#lockbox").addEventListener("click",function(e){
+    if(e.target.id==="lockbtn"){forgetKey();renderRivales(null)}
+  });
+  fetch("rivales.enc.json?v="+Date.now()).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(b){RIV=b;return storedOpen()},function(){RIV=null;return null}).then(function(data){renderRivales(data)});
+}
+/* ---- fin Rivales ---- */
 
 function boot(){
   document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){setTab(t.dataset.tab);try{history.replaceState(null,"","#"+t.dataset.tab)}catch(e){location.hash=t.dataset.tab}})});
@@ -331,7 +445,7 @@ function boot(){
   setTab(location.hash.slice(1));
   fetch("data.json?v="+Date.now()).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(j){
     D=j;ME=D.meta.team;
-    renderHero();renderMatches();renderTable();renderStats();renderSquad();renderFoot();
+    renderHero();renderMatches();renderTable();renderStats();renderSquad();renderFoot();initRivales();
   }).catch(function(){
     $("#heroBody").innerHTML='<p class="kicker">No se pudieron cargar los datos</p>';
     $("#mlist").innerHTML='<div class="msg">No se encontró <b>data.json</b>. Abrí el sitio desde su dirección web, no como archivo suelto.</div>';

@@ -1,0 +1,3 @@
+notas*.json
+*.plain.json
+__pycache__/
