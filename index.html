@@ -406,7 +406,7 @@ function renderRivales(priv){
   }else if(!canCrypto()){
     lock.innerHTML='<div class="lock"><p>Este navegador no puede abrir las notas privadas. Probá con otro, desde la dirección https del sitio.</p></div>';
   }else if(!priv){
-    lock.innerHTML='<div class="lock"><p><b>Notas privadas del plantel.</b> Escribí la contraseña que te dio Matías para ver cómo juega cada rival.</p>'+
+    lock.innerHTML='<div class="lock"><p><b>Notas privadas del plantel.</b> Escribí la contraseña para ver cómo juega cada rival.</p>'+
       '<form id="pwform"><label for="pw" class="upd" style="flex-basis:100%">Contraseña</label><input type="password" id="pw" autocomplete="off" required><button class="btn" id="pwbtn" type="submit">Abrir</button>'+
       '<label for="remember"><input type="checkbox" id="remember"> Recordar en este dispositivo</label></form><p class="err" id="pwerr" role="alert" hidden></p></div>';
   }else{
