@@ -506,5 +506,33 @@
    "pos": "Volante"
   }
  ],
- "matches": {}
+ "matches": {},
+ "kits": {
+  "Boldklubben Smæk": {
+   "shirt": "naranja",
+   "shorts": "azul"
+  },
+  "Tiim Dennis": {
+   "shirt": "negro",
+   "shorts": "negro"
+  },
+  "København Futsal": {
+   "shirt": "gris",
+   "shorts": "blanco",
+   "alt": "amarillo"
+  },
+  "La Peña F.C.": {
+   "shirt": "bordó",
+   "shorts": "negro"
+  },
+  "Yu-98": {
+   "shirt": "rojo",
+   "shorts": "azul",
+   "alt": "negro"
+  },
+  "Boca Boldisch": {
+   "shirt": "blanco",
+   "shorts": "blanco"
+  }
+ }
 }

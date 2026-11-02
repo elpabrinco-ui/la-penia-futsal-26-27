@@ -239,6 +239,7 @@ function daysUntil(f){
   return Math.round((Date.parse(f.date+"T00:00:00Z")-today)/864e5);
 }
 
+function kitTxt(t){var k=D.kits&&D.kits[t];return k?"camiseta "+k.shirt+", short "+k.shorts+(k.alt?" (2º juego: "+k.alt+")":""):""}
 function renderHero(){
   var f=nextMine(), b=$("#heroBody"), h=$("#hero");
   if(!f){
@@ -252,6 +253,7 @@ function renderHero(){
   b.innerHTML='<p class="kicker">Próximo partido · '+when+'</p>'+
    '<div class="teams"><div class="tm">'+esc(f.home)+'<small>'+(f.home===ME?'Local':'Visitante')+'</small></div><div class="vs">vs</div><div class="tm away">'+esc(f.away)+'<small>'+(f.away===ME?'Local':'Visitante')+'</small></div></div>'+
    '<div class="facts"><div class="fact"><b>'+esc(dateLong(f.date))+'</b><span>Día</span></div><div class="fact"><b>'+esc(f.time)+'</b><span>Hora</span></div><div class="fact"><b><a href="'+mapsUrl(f.venue)+'" target="_blank" rel="noopener">'+esc(f.venue)+'</a></b><span>Cancha</span></div></div>'+
+   (D.kits&&D.kits[opp]?'<p class="hint" style="margin:10px 0 0">Ellos: '+esc(kitTxt(opp))+'<br>Nosotros: '+esc(kitTxt(ME))+'</p>':'')+
    '<div class="links"><a class="pill" href="'+mapsUrl(f.venue)+'" target="_blank" rel="noopener">Cómo llegar</a><a class="pill" href="'+kampUrl(f)+'" target="_blank" rel="noopener">Partido en DAI</a></div>';
   renderAvail(f);
 }
@@ -389,7 +391,7 @@ function nextVs(t){var n=nowTs();return rivalMatches(t).filter(function(f){retur
 function rivalCard(t,priv){
   var ms=rivalMatches(t), nx=nextVs(t);
   var when=nx?"Próximo: "+dateShort(nx.date)+" · "+nx.time:"";
-  var pub="<h4>Partidos contra ellos</h4><ul>"+ms.map(function(f){
+  var pub=(kitTxt(t)?"<h4>Camiseta</h4><p style=\"margin:0\">"+esc(kitTxt(t))+"</p>":"")+"<h4>Partidos contra ellos</h4><ul>"+ms.map(function(f){
     var res=played(f)?" · "+f.result.h+" - "+f.result.a:"";
     return "<li>"+esc(dateShort(f.date))+", "+esc(f.time)+" · "+(f.home===ME?"Local":"Visitante")+" · "+esc(f.venue)+esc(res)+"</li>";
   }).join("")+"</ul>";
