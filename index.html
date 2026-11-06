@@ -251,7 +251,7 @@ function renderHero(){
   var d=daysUntil(f), when=d<=0?"Hoy":d===1?"Mañana":"En "+d+" días";
   var opp=f.home===ME?f.away:f.home, local=f.home===ME;
   b.innerHTML='<p class="kicker">Próximo partido · '+when+'</p>'+
-   '<div class="teams"><div class="tm">'+esc(f.home)+'<small>'+(f.home===ME?'Local':'Visitante')+'</small></div><div class="vs">vs</div><div class="tm away">'+esc(f.away)+'<small>'+(f.away===ME?'Local':'Visitante')+'</small></div></div>'+
+   '<div class="teams"><div class="tm">'+esc(f.home)+'<small>Local</small></div><div class="vs">vs</div><div class="tm away">'+esc(f.away)+'<small>Visitante</small></div></div>'+
    '<div class="facts"><div class="fact"><b>'+esc(dateLong(f.date))+'</b><span>Día</span></div><div class="fact"><b>'+esc(f.time)+'</b><span>Hora</span></div><div class="fact"><b><a href="'+mapsUrl(f.venue)+'" target="_blank" rel="noopener">'+esc(f.venue)+'</a></b><span>Cancha</span></div></div>'+
    (D.kits&&D.kits[opp]?'<p class="hint" style="margin:10px 0 0">Ellos: '+esc(kitTxt(opp))+'<br>Nosotros: '+esc(kitTxt(ME))+'</p>':'')+
    '<div class="links"><a class="pill" href="'+mapsUrl(f.venue)+'" target="_blank" rel="noopener">Cómo llegar</a><a class="pill" href="'+kampUrl(f)+'" target="_blank" rel="noopener">Partido en DAI</a></div>';
