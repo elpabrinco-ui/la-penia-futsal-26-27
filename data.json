@@ -1,538 +1,538 @@
 {
- "meta": {
-  "team": "La Peña F.C.",
-  "tournament": "DAI Futsal · Række 1",
-  "season": "2026/27",
-  "updated": "2026-11-01",
-  "source": "https://resultater.dai-sport.dk/tms/Turneringer-og-resultater/Pulje-Komplet-Kampprogram.aspx?PuljeId=947",
-  "standingsSource": "https://resultater.dai-sport.dk/tms/Turneringer-og-resultater/Pulje-Stilling.aspx?PuljeId=947"
- },
- "teams": [
-  {
-   "name": "Boca Boldisch",
-   "holdId": 10185
+  "meta": {
+    "team": "La Peña F.C.",
+    "tournament": "DAI Futsal · Række 1",
+    "season": "2026/27",
+    "updated": "2026-11-07",
+    "source": "https://resultater.dai-sport.dk/tms/Turneringer-og-resultater/Pulje-Komplet-Kampprogram.aspx?PuljeId=947",
+    "standingsSource": "https://resultater.dai-sport.dk/tms/Turneringer-og-resultater/Pulje-Stilling.aspx?PuljeId=947"
   },
-  {
-   "name": "Boldklubben Smæk",
-   "holdId": 10167
-  },
-  {
-   "name": "Tiim Dennis",
-   "holdId": 10172
-  },
-  {
-   "name": "Yu-98",
-   "holdId": 10181
-  },
-  {
-   "name": "København Futsal",
-   "holdId": 10175
-  },
-  {
-   "name": "La Peña F.C.",
-   "holdId": 10180
+  "teams": [
+    {
+      "name": "Boca Boldisch",
+      "holdId": 10185
+    },
+    {
+      "name": "Boldklubben Smæk",
+      "holdId": 10167
+    },
+    {
+      "name": "Tiim Dennis",
+      "holdId": 10172
+    },
+    {
+      "name": "Yu-98",
+      "holdId": 10181
+    },
+    {
+      "name": "København Futsal",
+      "holdId": 10175
+    },
+    {
+      "name": "La Peña F.C.",
+      "holdId": 10180
+    }
+  ],
+  "standings": [
+    {
+      "pos": 1,
+      "team": "Yu-98",
+      "p": 1,
+      "w": 1,
+      "d": 0,
+      "l": 0,
+      "gf": 3,
+      "ga": 0,
+      "pts": 3
+    },
+    {
+      "pos": 2,
+      "team": "La Peña F.C.",
+      "p": 1,
+      "w": 1,
+      "d": 0,
+      "l": 0,
+      "gf": 5,
+      "ga": 3,
+      "pts": 3
+    },
+    {
+      "pos": 3,
+      "team": "Boldklubben Smæk",
+      "p": 1,
+      "w": 1,
+      "d": 0,
+      "l": 0,
+      "gf": 3,
+      "ga": 2,
+      "pts": 3
+    },
+    {
+      "pos": 4,
+      "team": "Boca Boldisch",
+      "p": 1,
+      "w": 0,
+      "d": 0,
+      "l": 1,
+      "gf": 2,
+      "ga": 3,
+      "pts": 0
+    },
+    {
+      "pos": 5,
+      "team": "København Futsal",
+      "p": 1,
+      "w": 0,
+      "d": 0,
+      "l": 1,
+      "gf": 3,
+      "ga": 5,
+      "pts": 0
+    },
+    {
+      "pos": 6,
+      "team": "Tiim Dennis",
+      "p": 1,
+      "w": 0,
+      "d": 0,
+      "l": 1,
+      "gf": 0,
+      "ga": 3,
+      "pts": 0
+    }
+  ],
+  "fixtures": [
+    {
+      "id": 161266,
+      "kampId": 77027,
+      "date": "2026-11-07",
+      "time": "13:00",
+      "home": "Boca Boldisch",
+      "away": "Boldklubben Smæk",
+      "venue": "Valby Hal-3",
+      "venueId": 534,
+      "result": null
+    },
+    {
+      "id": 161267,
+      "kampId": 77028,
+      "date": "2026-11-07",
+      "time": "14:00",
+      "home": "Tiim Dennis",
+      "away": "Yu-98",
+      "venue": "Valby Hal-3",
+      "venueId": 534,
+      "result": null
+    },
+    {
+      "id": 161268,
+      "kampId": 77029,
+      "date": "2026-11-07",
+      "time": "15:00",
+      "home": "København Futsal",
+      "away": "La Peña F.C.",
+      "venue": "Valby Hal-3",
+      "venueId": 534,
+      "result": null
+    },
+    {
+      "id": 161271,
+      "kampId": 77032,
+      "date": "2026-11-15",
+      "time": "14:00",
+      "home": "Yu-98",
+      "away": "Boldklubben Smæk",
+      "venue": "Holmen Hal C.",
+      "venueId": 1185,
+      "result": null
+    },
+    {
+      "id": 161269,
+      "kampId": 77030,
+      "date": "2026-11-15",
+      "time": "15:00",
+      "home": "Boca Boldisch",
+      "away": "La Peña F.C.",
+      "venue": "Holmen Hal C.",
+      "venueId": 1185,
+      "result": null
+    },
+    {
+      "id": 161270,
+      "kampId": 77031,
+      "date": "2026-11-15",
+      "time": "16:00",
+      "home": "København Futsal",
+      "away": "Tiim Dennis",
+      "venue": "Holmen Hal C.",
+      "venueId": 1185,
+      "result": null
+    },
+    {
+      "id": 161274,
+      "kampId": 77035,
+      "date": "2026-11-21",
+      "time": "13:00",
+      "home": "Yu-98",
+      "away": "La Peña F.C.",
+      "venue": "Holmen Hal C.",
+      "venueId": 1185,
+      "result": null
+    },
+    {
+      "id": 161272,
+      "kampId": 77033,
+      "date": "2026-11-21",
+      "time": "14:00",
+      "home": "Boca Boldisch",
+      "away": "København Futsal",
+      "venue": "Holmen Hal C.",
+      "venueId": 1185,
+      "result": null
+    },
+    {
+      "id": 161273,
+      "kampId": 77034,
+      "date": "2026-11-21",
+      "time": "15:00",
+      "home": "Tiim Dennis",
+      "away": "Boldklubben Smæk",
+      "venue": "Holmen Hal C.",
+      "venueId": 1185,
+      "result": null
+    },
+    {
+      "id": 161275,
+      "kampId": 77036,
+      "date": "2026-12-05",
+      "time": "13:00",
+      "home": "Yu-98",
+      "away": "København Futsal",
+      "venue": "Bellahøj Hal-2",
+      "venueId": 539,
+      "result": null
+    },
+    {
+      "id": 161276,
+      "kampId": 77037,
+      "date": "2026-12-05",
+      "time": "14:00",
+      "home": "La Peña F.C.",
+      "away": "Boldklubben Smæk",
+      "venue": "Bellahøj Hal-2",
+      "venueId": 539,
+      "result": null
+    },
+    {
+      "id": 161277,
+      "kampId": 77038,
+      "date": "2026-12-05",
+      "time": "15:00",
+      "home": "Tiim Dennis",
+      "away": "Boca Boldisch",
+      "venue": "Bellahøj Hal-2",
+      "venueId": 539,
+      "result": null
+    },
+    {
+      "id": 161278,
+      "kampId": 77039,
+      "date": "2027-01-03",
+      "time": "14:00",
+      "home": "Yu-98",
+      "away": "Boca Boldisch",
+      "venue": "Valby Hal-1",
+      "venueId": 532,
+      "result": null
+    },
+    {
+      "id": 161280,
+      "kampId": 77041,
+      "date": "2027-01-03",
+      "time": "15:00",
+      "home": "La Peña F.C.",
+      "away": "Tiim Dennis",
+      "venue": "Valby Hal-1",
+      "venueId": 532,
+      "result": null
+    },
+    {
+      "id": 161282,
+      "kampId": 77043,
+      "date": "2027-01-16",
+      "time": "13:00",
+      "home": "Yu-98",
+      "away": "Tiim Dennis",
+      "venue": "Valby Hal-2",
+      "venueId": 533,
+      "result": null
+    },
+    {
+      "id": 161281,
+      "kampId": 77042,
+      "date": "2027-01-16",
+      "time": "14:00",
+      "home": "Boldklubben Smæk",
+      "away": "Boca Boldisch",
+      "venue": "Valby Hal-2",
+      "venueId": 533,
+      "result": null
+    },
+    {
+      "id": 161283,
+      "kampId": 77044,
+      "date": "2027-01-16",
+      "time": "15:00",
+      "home": "La Peña F.C.",
+      "away": "København Futsal",
+      "venue": "Valby Hal-2",
+      "venueId": 533,
+      "result": null
+    },
+    {
+      "id": 161286,
+      "kampId": 77047,
+      "date": "2027-01-23",
+      "time": "13:00",
+      "home": "Boldklubben Smæk",
+      "away": "Yu-98",
+      "venue": "Holmen Hal C.",
+      "venueId": 1185,
+      "result": null
+    },
+    {
+      "id": 161284,
+      "kampId": 77045,
+      "date": "2027-01-23",
+      "time": "14:00",
+      "home": "La Peña F.C.",
+      "away": "Boca Boldisch",
+      "venue": "Holmen Hal C.",
+      "venueId": 1185,
+      "result": null
+    },
+    {
+      "id": 161285,
+      "kampId": 77046,
+      "date": "2027-01-23",
+      "time": "15:00",
+      "home": "Tiim Dennis",
+      "away": "København Futsal",
+      "venue": "Holmen Hal C.",
+      "venueId": 1185,
+      "result": null
+    },
+    {
+      "id": 161288,
+      "kampId": 77049,
+      "date": "2027-02-07",
+      "time": "14:00",
+      "home": "Boldklubben Smæk",
+      "away": "Tiim Dennis",
+      "venue": "Sundby Hal-3",
+      "venueId": 536,
+      "result": null
+    },
+    {
+      "id": 161289,
+      "kampId": 77050,
+      "date": "2027-02-07",
+      "time": "15:00",
+      "home": "La Peña F.C.",
+      "away": "Yu-98",
+      "venue": "Sundby Hal-3",
+      "venueId": 536,
+      "result": null
+    },
+    {
+      "id": 161287,
+      "kampId": 77048,
+      "date": "2027-02-07",
+      "time": "16:00",
+      "home": "København Futsal",
+      "away": "Boca Boldisch",
+      "venue": "Sundby Hal-3",
+      "venueId": 536,
+      "result": null
+    },
+    {
+      "id": 161279,
+      "kampId": 77040,
+      "date": "2027-02-14",
+      "time": "12:00",
+      "home": "København Futsal",
+      "away": "Boldklubben Smæk",
+      "venue": "Ryparken. Hal",
+      "venueId": 540,
+      "result": null
+    },
+    {
+      "id": 161290,
+      "kampId": 77051,
+      "date": "2027-02-21",
+      "time": "15:00",
+      "home": "København Futsal",
+      "away": "Yu-98",
+      "venue": "Holmen Hal C.",
+      "venueId": 1185,
+      "result": null
+    },
+    {
+      "id": 161292,
+      "kampId": 77053,
+      "date": "2027-02-21",
+      "time": "16:00",
+      "home": "Boca Boldisch",
+      "away": "Tiim Dennis",
+      "venue": "Holmen Hal C.",
+      "venueId": 1185,
+      "result": null
+    },
+    {
+      "id": 161291,
+      "kampId": 77052,
+      "date": "2027-02-21",
+      "time": "17:00",
+      "home": "Boldklubben Smæk",
+      "away": "La Peña F.C.",
+      "venue": "Holmen Hal C.",
+      "venueId": 1185,
+      "result": null
+    },
+    {
+      "id": 161293,
+      "kampId": 77054,
+      "date": "2027-03-06",
+      "time": "13:00",
+      "home": "Boca Boldisch",
+      "away": "Yu-98",
+      "venue": "Bellahøj Hal-1",
+      "venueId": 538,
+      "result": null
+    },
+    {
+      "id": 161294,
+      "kampId": 77055,
+      "date": "2027-03-06",
+      "time": "14:00",
+      "home": "Boldklubben Smæk",
+      "away": "København Futsal",
+      "venue": "Bellahøj Hal-1",
+      "venueId": 538,
+      "result": null
+    },
+    {
+      "id": 161295,
+      "kampId": 77056,
+      "date": "2027-03-06",
+      "time": "15:00",
+      "home": "Tiim Dennis",
+      "away": "La Peña F.C.",
+      "venue": "Bellahøj Hal-1",
+      "venueId": 538,
+      "result": null
+    }
+  ],
+  "squad": [
+    {
+      "name": "Juan Carlos Dante Angelini",
+      "number": 10,
+      "pos": "Delantero"
+    },
+    {
+      "name": "Eros Marcos Salamida",
+      "number": 11,
+      "pos": "Volante (delantero)"
+    },
+    {
+      "name": "Fernando Angelini",
+      "number": 14,
+      "pos": "Delantero (volante)"
+    },
+    {
+      "name": "Lucas Gabriel Beltrame",
+      "number": 9,
+      "pos": "Volante (defensor)"
+    },
+    {
+      "name": "Mariano Manuel Castorina",
+      "number": 3,
+      "pos": "Volante (defensor)"
+    },
+    {
+      "name": "Marcos Agustin Murua",
+      "number": 8,
+      "pos": "Defensor (volante)"
+    },
+    {
+      "name": "Lucas Julian Morinigo",
+      "number": 6,
+      "pos": "Defensor (volante)"
+    },
+    {
+      "name": "Walter Breuer",
+      "number": 4,
+      "pos": "Volante"
+    },
+    {
+      "name": "Matias Norberto Trento",
+      "number": 5,
+      "pos": "Volante (defensor)"
+    },
+    {
+      "name": "Juan Ignacio Todisco",
+      "number": 7,
+      "pos": "Volante (defensor)"
+    },
+    {
+      "name": "Juan Ignacio Alesandrello",
+      "number": 21,
+      "pos": "Volante"
+    },
+    {
+      "name": "Pablo Nicolas Nuñez",
+      "number": 19,
+      "pos": "Defensor (volante)"
+    },
+    {
+      "name": "Leonel Bartolo",
+      "number": 1,
+      "pos": "Arquero"
+    },
+    {
+      "name": "Tomas Rivero",
+      "nick": "Cuba",
+      "number": 12,
+      "pos": "Volante"
+    }
+  ],
+  "matches": {},
+  "kits": {
+    "Boldklubben Smæk": {
+      "shirt": "naranja",
+      "shorts": "azul"
+    },
+    "Tiim Dennis": {
+      "shirt": "negro",
+      "shorts": "negro"
+    },
+    "København Futsal": {
+      "shirt": "gris",
+      "shorts": "blanco",
+      "alt": "amarillo"
+    },
+    "La Peña F.C.": {
+      "shirt": "bordó",
+      "shorts": "negro"
+    },
+    "Yu-98": {
+      "shirt": "rojo",
+      "shorts": "azul",
+      "alt": "negro"
+    },
+    "Boca Boldisch": {
+      "shirt": "blanco",
+      "shorts": "blanco"
+    }
   }
- ],
- "standings": [
-  {
-   "pos": 1,
-   "team": "Boca Boldisch",
-   "p": 0,
-   "w": 0,
-   "d": 0,
-   "l": 0,
-   "gf": 0,
-   "ga": 0,
-   "pts": 0
-  },
-  {
-   "pos": 2,
-   "team": "Boldklubben Smæk",
-   "p": 0,
-   "w": 0,
-   "d": 0,
-   "l": 0,
-   "gf": 0,
-   "ga": 0,
-   "pts": 0
-  },
-  {
-   "pos": 3,
-   "team": "Tiim Dennis",
-   "p": 0,
-   "w": 0,
-   "d": 0,
-   "l": 0,
-   "gf": 0,
-   "ga": 0,
-   "pts": 0
-  },
-  {
-   "pos": 4,
-   "team": "Yu-98",
-   "p": 0,
-   "w": 0,
-   "d": 0,
-   "l": 0,
-   "gf": 0,
-   "ga": 0,
-   "pts": 0
-  },
-  {
-   "pos": 5,
-   "team": "København Futsal",
-   "p": 0,
-   "w": 0,
-   "d": 0,
-   "l": 0,
-   "gf": 0,
-   "ga": 0,
-   "pts": 0
-  },
-  {
-   "pos": 6,
-   "team": "La Peña F.C.",
-   "p": 0,
-   "w": 0,
-   "d": 0,
-   "l": 0,
-   "gf": 0,
-   "ga": 0,
-   "pts": 0
-  }
- ],
- "fixtures": [
-  {
-   "id": 161266,
-   "kampId": 77027,
-   "date": "2026-11-07",
-   "time": "13:00",
-   "home": "Boca Boldisch",
-   "away": "Boldklubben Smæk",
-   "venue": "Valby Hal-3",
-   "venueId": 534,
-   "result": null
-  },
-  {
-   "id": 161267,
-   "kampId": 77028,
-   "date": "2026-11-07",
-   "time": "14:00",
-   "home": "Tiim Dennis",
-   "away": "Yu-98",
-   "venue": "Valby Hal-3",
-   "venueId": 534,
-   "result": null
-  },
-  {
-   "id": 161268,
-   "kampId": 77029,
-   "date": "2026-11-07",
-   "time": "15:00",
-   "home": "København Futsal",
-   "away": "La Peña F.C.",
-   "venue": "Valby Hal-3",
-   "venueId": 534,
-   "result": null
-  },
-  {
-   "id": 161271,
-   "kampId": 77032,
-   "date": "2026-11-15",
-   "time": "14:00",
-   "home": "Yu-98",
-   "away": "Boldklubben Smæk",
-   "venue": "Holmen Hal C.",
-   "venueId": 1185,
-   "result": null
-  },
-  {
-   "id": 161269,
-   "kampId": 77030,
-   "date": "2026-11-15",
-   "time": "15:00",
-   "home": "Boca Boldisch",
-   "away": "La Peña F.C.",
-   "venue": "Holmen Hal C.",
-   "venueId": 1185,
-   "result": null
-  },
-  {
-   "id": 161270,
-   "kampId": 77031,
-   "date": "2026-11-15",
-   "time": "16:00",
-   "home": "København Futsal",
-   "away": "Tiim Dennis",
-   "venue": "Holmen Hal C.",
-   "venueId": 1185,
-   "result": null
-  },
-  {
-   "id": 161274,
-   "kampId": 77035,
-   "date": "2026-11-21",
-   "time": "13:00",
-   "home": "Yu-98",
-   "away": "La Peña F.C.",
-   "venue": "Holmen Hal C.",
-   "venueId": 1185,
-   "result": null
-  },
-  {
-   "id": 161272,
-   "kampId": 77033,
-   "date": "2026-11-21",
-   "time": "14:00",
-   "home": "Boca Boldisch",
-   "away": "København Futsal",
-   "venue": "Holmen Hal C.",
-   "venueId": 1185,
-   "result": null
-  },
-  {
-   "id": 161273,
-   "kampId": 77034,
-   "date": "2026-11-21",
-   "time": "15:00",
-   "home": "Tiim Dennis",
-   "away": "Boldklubben Smæk",
-   "venue": "Holmen Hal C.",
-   "venueId": 1185,
-   "result": null
-  },
-  {
-   "id": 161275,
-   "kampId": 77036,
-   "date": "2026-12-05",
-   "time": "13:00",
-   "home": "Yu-98",
-   "away": "København Futsal",
-   "venue": "Bellahøj Hal-2",
-   "venueId": 539,
-   "result": null
-  },
-  {
-   "id": 161276,
-   "kampId": 77037,
-   "date": "2026-12-05",
-   "time": "14:00",
-   "home": "La Peña F.C.",
-   "away": "Boldklubben Smæk",
-   "venue": "Bellahøj Hal-2",
-   "venueId": 539,
-   "result": null
-  },
-  {
-   "id": 161277,
-   "kampId": 77038,
-   "date": "2026-12-05",
-   "time": "15:00",
-   "home": "Tiim Dennis",
-   "away": "Boca Boldisch",
-   "venue": "Bellahøj Hal-2",
-   "venueId": 539,
-   "result": null
-  },
-  {
-   "id": 161278,
-   "kampId": 77039,
-   "date": "2027-01-03",
-   "time": "14:00",
-   "home": "Yu-98",
-   "away": "Boca Boldisch",
-   "venue": "Valby Hal-1",
-   "venueId": 532,
-   "result": null
-  },
-  {
-   "id": 161280,
-   "kampId": 77041,
-   "date": "2027-01-03",
-   "time": "15:00",
-   "home": "La Peña F.C.",
-   "away": "Tiim Dennis",
-   "venue": "Valby Hal-1",
-   "venueId": 532,
-   "result": null
-  },
-  {
-   "id": 161282,
-   "kampId": 77043,
-   "date": "2027-01-16",
-   "time": "13:00",
-   "home": "Yu-98",
-   "away": "Tiim Dennis",
-   "venue": "Valby Hal-2",
-   "venueId": 533,
-   "result": null
-  },
-  {
-   "id": 161281,
-   "kampId": 77042,
-   "date": "2027-01-16",
-   "time": "14:00",
-   "home": "Boldklubben Smæk",
-   "away": "Boca Boldisch",
-   "venue": "Valby Hal-2",
-   "venueId": 533,
-   "result": null
-  },
-  {
-   "id": 161283,
-   "kampId": 77044,
-   "date": "2027-01-16",
-   "time": "15:00",
-   "home": "La Peña F.C.",
-   "away": "København Futsal",
-   "venue": "Valby Hal-2",
-   "venueId": 533,
-   "result": null
-  },
-  {
-   "id": 161286,
-   "kampId": 77047,
-   "date": "2027-01-23",
-   "time": "13:00",
-   "home": "Boldklubben Smæk",
-   "away": "Yu-98",
-   "venue": "Holmen Hal C.",
-   "venueId": 1185,
-   "result": null
-  },
-  {
-   "id": 161284,
-   "kampId": 77045,
-   "date": "2027-01-23",
-   "time": "14:00",
-   "home": "La Peña F.C.",
-   "away": "Boca Boldisch",
-   "venue": "Holmen Hal C.",
-   "venueId": 1185,
-   "result": null
-  },
-  {
-   "id": 161285,
-   "kampId": 77046,
-   "date": "2027-01-23",
-   "time": "15:00",
-   "home": "Tiim Dennis",
-   "away": "København Futsal",
-   "venue": "Holmen Hal C.",
-   "venueId": 1185,
-   "result": null
-  },
-  {
-   "id": 161288,
-   "kampId": 77049,
-   "date": "2027-02-07",
-   "time": "14:00",
-   "home": "Boldklubben Smæk",
-   "away": "Tiim Dennis",
-   "venue": "Sundby Hal-3",
-   "venueId": 536,
-   "result": null
-  },
-  {
-   "id": 161289,
-   "kampId": 77050,
-   "date": "2027-02-07",
-   "time": "15:00",
-   "home": "La Peña F.C.",
-   "away": "Yu-98",
-   "venue": "Sundby Hal-3",
-   "venueId": 536,
-   "result": null
-  },
-  {
-   "id": 161287,
-   "kampId": 77048,
-   "date": "2027-02-07",
-   "time": "16:00",
-   "home": "København Futsal",
-   "away": "Boca Boldisch",
-   "venue": "Sundby Hal-3",
-   "venueId": 536,
-   "result": null
-  },
-  {
-   "id": 161279,
-   "kampId": 77040,
-   "date": "2027-02-14",
-   "time": "12:00",
-   "home": "København Futsal",
-   "away": "Boldklubben Smæk",
-   "venue": "Ryparken. Hal",
-   "venueId": 540,
-   "result": null
-  },
-  {
-   "id": 161290,
-   "kampId": 77051,
-   "date": "2027-02-21",
-   "time": "15:00",
-   "home": "København Futsal",
-   "away": "Yu-98",
-   "venue": "Holmen Hal C.",
-   "venueId": 1185,
-   "result": null
-  },
-  {
-   "id": 161292,
-   "kampId": 77053,
-   "date": "2027-02-21",
-   "time": "16:00",
-   "home": "Boca Boldisch",
-   "away": "Tiim Dennis",
-   "venue": "Holmen Hal C.",
-   "venueId": 1185,
-   "result": null
-  },
-  {
-   "id": 161291,
-   "kampId": 77052,
-   "date": "2027-02-21",
-   "time": "17:00",
-   "home": "Boldklubben Smæk",
-   "away": "La Peña F.C.",
-   "venue": "Holmen Hal C.",
-   "venueId": 1185,
-   "result": null
-  },
-  {
-   "id": 161293,
-   "kampId": 77054,
-   "date": "2027-03-06",
-   "time": "13:00",
-   "home": "Boca Boldisch",
-   "away": "Yu-98",
-   "venue": "Bellahøj Hal-1",
-   "venueId": 538,
-   "result": null
-  },
-  {
-   "id": 161294,
-   "kampId": 77055,
-   "date": "2027-03-06",
-   "time": "14:00",
-   "home": "Boldklubben Smæk",
-   "away": "København Futsal",
-   "venue": "Bellahøj Hal-1",
-   "venueId": 538,
-   "result": null
-  },
-  {
-   "id": 161295,
-   "kampId": 77056,
-   "date": "2027-03-06",
-   "time": "15:00",
-   "home": "Tiim Dennis",
-   "away": "La Peña F.C.",
-   "venue": "Bellahøj Hal-1",
-   "venueId": 538,
-   "result": null
-  }
- ],
- "squad": [
-  {
-   "name": "Juan Carlos Dante Angelini",
-   "number": 10,
-   "pos": "Delantero"
-  },
-  {
-   "name": "Eros Marcos Salamida",
-   "number": 11,
-   "pos": "Volante (delantero)"
-  },
-  {
-   "name": "Fernando Angelini",
-   "number": 14,
-   "pos": "Delantero (volante)"
-  },
-  {
-   "name": "Lucas Gabriel Beltrame",
-   "number": 9,
-   "pos": "Volante (defensor)"
-  },
-  {
-   "name": "Mariano Manuel Castorina",
-   "number": 3,
-   "pos": "Volante (defensor)"
-  },
-  {
-   "name": "Marcos Agustin Murua",
-   "number": 8,
-   "pos": "Defensor (volante)"
-  },
-  {
-   "name": "Lucas Julian Morinigo",
-   "number": 6,
-   "pos": "Defensor (volante)"
-  },
-  {
-   "name": "Walter Breuer",
-   "number": 4,
-   "pos": "Volante"
-  },
-  {
-   "name": "Matias Norberto Trento",
-   "number": 5,
-   "pos": "Volante (defensor)"
-  },
-  {
-   "name": "Juan Ignacio Todisco",
-   "number": 7,
-   "pos": "Volante (defensor)"
-  },
-  {
-   "name": "Juan Ignacio Alesandrello",
-   "number": 21,
-   "pos": "Volante"
-  },
-  {
-   "name": "Pablo Nicolas Nuñez",
-   "number": 19,
-   "pos": "Defensor (volante)"
-  },
-  {
-   "name": "Leonel Bartolo",
-   "number": 1,
-   "pos": "Arquero"
-  },
-  {
-   "name": "Tomas Rivero",
-   "nick": "Cuba",
-   "number": 12,
-   "pos": "Volante"
-  }
- ],
- "matches": {},
- "kits": {
-  "Boldklubben Smæk": {
-   "shirt": "naranja",
-   "shorts": "azul"
-  },
-  "Tiim Dennis": {
-   "shirt": "negro",
-   "shorts": "negro"
-  },
-  "København Futsal": {
-   "shirt": "gris",
-   "shorts": "blanco",
-   "alt": "amarillo"
-  },
-  "La Peña F.C.": {
-   "shirt": "bordó",
-   "shorts": "negro"
-  },
-  "Yu-98": {
-   "shirt": "rojo",
-   "shorts": "azul",
-   "alt": "negro"
-  },
-  "Boca Boldisch": {
-   "shirt": "blanco",
-   "shorts": "blanco"
-  }
- }
 }
