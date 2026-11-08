@@ -103,7 +103,7 @@ h3{font-family:var(--display);font-weight:400;font-size:26px;margin:0 0 6px}
 .mt em{font-style:normal;color:var(--brand-text)}
 .ms{font-size:13px;color:var(--muted)}
 .score{font-family:var(--display);font-size:32px;white-space:nowrap;text-align:right}
-.score small{display:block;font-family:var(--body);font-size:13px;color:var(--muted)}
+.score small{display:block;white-space:normal;max-width:104px;margin-left:auto;line-height:1.25;font-family:var(--body);font-size:13px;color:var(--muted)}
 .detail{padding:0 14px 14px;border-top:1px solid var(--line);font-size:15px}
 .detail dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:12px 0 0}
 .detail dt{color:var(--muted)}
@@ -221,6 +221,7 @@ function dateLong(d){return cap(new Intl.DateTimeFormat("es-AR",{timeZone:"UTC",
 function dateShort(d){return cap(new Intl.DateTimeFormat("es-AR",{timeZone:"UTC",weekday:"short",day:"numeric",month:"short"}).format(new Date(d+"T12:00:00Z")).replace(".",""))}
 function mine(f){return f.home===ME||f.away===ME}
 function played(f){return f.result!=null}
+function vname(v){var a=D.venueAlias&&D.venueAlias[v];return a?v+" ("+a+")":v}
 function mapsUrl(v){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(v+" København")}
 function kampUrl(f){return DAI+"Kamp-Information.aspx?KampId="+f.kampId}
 function outcome(f){
@@ -255,7 +256,7 @@ function renderHero(){
   var opp=f.home===ME?f.away:f.home, local=f.home===ME;
   b.innerHTML='<p class="kicker">Próximo partido · '+when+'</p>'+
    '<div class="teams"><div class="tm">'+esc(f.home)+'<small>Local</small></div><div class="vs">vs</div><div class="tm away">'+esc(f.away)+'<small>Visitante</small></div></div>'+
-   '<div class="facts"><div class="fact"><b>'+esc(dateLong(f.date))+'</b><span>Día</span></div><div class="fact"><b>'+esc(f.time)+'</b><span>Hora</span></div><div class="fact"><b><a href="'+mapsUrl(f.venue)+'" target="_blank" rel="noopener">'+esc(f.venue)+'</a></b><span>Cancha</span></div></div>'+
+   '<div class="facts"><div class="fact"><b>'+esc(dateLong(f.date))+'</b><span>Día</span></div><div class="fact"><b>'+esc(f.time)+'</b><span>Hora</span></div><div class="fact"><b><a href="'+mapsUrl(f.venue)+'" target="_blank" rel="noopener">'+esc(vname(f.venue))+'</a></b><span>Cancha</span></div></div>'+
    (D.kits&&D.kits[opp]?'<p class="hint" style="margin:10px 0 0">Ellos: '+esc(kitTxt(opp))+'<br>Nosotros: '+esc(kitTxt(ME))+'</p>':'')+
    '<div class="links"><a class="pill" href="'+mapsUrl(f.venue)+'" target="_blank" rel="noopener">Cómo llegar</a><a class="pill" href="'+kampUrl(f)+'" target="_blank" rel="noopener">Partido en DAI</a></div>';
   renderAvail(f);
@@ -272,14 +273,14 @@ function renderAvail(f){
 function matchCard(f){
   var o=outcome(f), m=md(f), r=f.result;
   var badge=o?'<div class="badge '+o+'" aria-label="'+({W:"Ganado",D:"Empatado",L:"Perdido"})[o]+'">'+o+'</div>':'<div class="badge N">'+(mine(f)?'—':'')+'</div>';
-  var right=played(f)?'<div class="score">'+r.h+' - '+r.a+'</div>':'<div class="score" style="font-size:26px">'+esc(f.time)+'<small>'+esc(f.venue)+'</small></div>';
-  var det='<dl><dt>Día</dt><dd>'+esc(dateLong(f.date))+', '+esc(f.time)+'</dd><dt>Cancha</dt><dd><a href="'+mapsUrl(f.venue)+'" target="_blank" rel="noopener">'+esc(f.venue)+'</a></dd>';
+  var right=played(f)?'<div class="score">'+r.h+' - '+r.a+'</div>':'<div class="score" style="font-size:26px">'+esc(f.time)+'<small>'+esc(vname(f.venue))+'</small></div>';
+  var det='<dl><dt>Día</dt><dd>'+esc(dateLong(f.date))+', '+esc(f.time)+'</dd><dt>Cancha</dt><dd><a href="'+mapsUrl(f.venue)+'" target="_blank" rel="noopener">'+esc(vname(f.venue))+'</a></dd>';
   if(m.goals&&Object.keys(m.goals).length)det+='<dt>Goles</dt><dd>'+esc(names(m.goals))+'</dd>';
   if(m.assists&&Object.keys(m.assists).length)det+='<dt>Asistencias</dt><dd>'+esc(names(m.assists))+'</dd>';
   if(m.mvp)det+='<dt>Figura</dt><dd>'+esc(m.mvp)+'</dd>';
   det+='<dt>Oficial</dt><dd><a href="'+kampUrl(f)+'" target="_blank" rel="noopener">Ver en DAI</a></dd></dl>';
   if(m.note)det+='<p class="note">'+esc(m.note)+'</p>';
-  return '<details class="match"><summary>'+badge+'<div><div class="mt">'+teamHtml(f)+'</div><div class="ms">'+esc(dateShort(f.date))+(played(f)?' · '+esc(f.venue):'')+'</div></div>'+right+'</summary><div class="detail">'+det+'</div></details>';
+  return '<details class="match"><summary>'+badge+'<div><div class="mt">'+teamHtml(f)+'</div><div class="ms">'+esc(dateShort(f.date))+(played(f)?' · '+esc(vname(f.venue)):'')+'</div></div>'+right+'</summary><div class="detail">'+det+'</div></details>';
 }
 
 function renderMatches(){
@@ -416,7 +417,7 @@ function rivalCard(t,priv){
   var when=nx?"Próximo: "+dateShort(nx.date)+" · "+nx.time:"";
   var pub=(kitTxt(t)?"<h4>Camiseta</h4><p style=\"margin:0\">"+esc(kitTxt(t))+"</p>":"")+"<h4>Partidos contra ellos</h4><ul>"+ms.map(function(f){
     var res=played(f)?" · "+f.result.h+" - "+f.result.a:"";
-    return "<li>"+esc(dateShort(f.date))+", "+esc(f.time)+" · "+(f.home===ME?"Local":"Visitante")+" · "+esc(f.venue)+esc(res)+"</li>";
+    return "<li>"+esc(dateShort(f.date))+", "+esc(f.time)+" · "+(f.home===ME?"Local":"Visitante")+" · "+esc(vname(f.venue))+esc(res)+"</li>";
   }).join("")+"</ul>";
   var pr="";
   var notes=priv&&priv.teams&&priv.teams[t];

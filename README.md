@@ -17,6 +17,7 @@ Sitio del equipo para el torneo de futsal DAI (Række 1). Muestra el próximo pa
 | `meta.updated` | Automático | Fecha de la última actualización (`AAAA-MM-DD`). |
 | `squad` | Matías | Jugadores: nombre, número (`null` si no hay), posición y apodo opcional (`nick`). |
 | `kits` | Matías (por chat) | Colores de camiseta y short de cada equipo (`shirt`, `shorts`, `alt` opcional), según la ficha de DAI. Se ven en el próximo partido y en Rivales. |
+| `venueAlias` | Matías (por chat) | Nombre con el que el equipo conoce una cancha, por ejemplo `"Holmen Hal C.": "Christiania"`. Se muestra al lado del nombre de DAI. |
 | `matches` | Matías (por chat) | Datos por partido, con el `id` del partido como clave. |
 
 Datos que se cargan en `matches["<id>"]`:
