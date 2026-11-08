@@ -40,6 +40,21 @@ Datos que se cargan en `matches["<id>"]`:
 
 `avail` acepta `si`, `duda` o `no`. Los nombres tienen que ser iguales a los de `squad`.
 
+## Checklist post partido
+
+Matías manda estos datos por chat después de cada partido. Todo va en `matches["<id>"]` (los nombres tienen que ser iguales a los de `squad`). Si falta algo, se carga lo que hay y se le pregunta lo que falta.
+
+1. Quiénes jugaron (`lineup`).
+2. Goles y quién asistió (`goals`, `assists`).
+3. Tarjetas amarillas y rojas (`yellow`, `red`). Si no hubo, se deja vacío.
+4. Figura del partido (`mvp`).
+5. Quién se lleva las casacas a lavar (`kitWash`). Tiene que ser lo más parejo posible: mirar la columna Casacas en Estadísticas.
+6. Notas sobre el rival: se cifran en `rivales.enc.json` (no van en `data.json`).
+7. Novedades de plantel: altas, bajas, números o posiciones (`squad`).
+8. Datos de la próxima fecha: colores de camiseta del rival (`kits`) y disponibilidad, si se usa.
+
+El resultado y la tabla los actualiza solo el agente desde DAI.
+
 ## Rivales: notas privadas con contraseña
 
 La pestaña **Rivales** muestra los partidos contra cada equipo (dato público) y, con contraseña, notas privadas sobre cómo juegan.
