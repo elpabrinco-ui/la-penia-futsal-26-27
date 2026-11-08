@@ -133,12 +133,14 @@ tr.me td:first-child{box-shadow:inset 4px 0 0 var(--brand-text)}
 .src{font-size:13px;color:var(--muted);margin:10px 0 0}
 
 /* Plantel */
-.player{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:8px}
+.player{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:8px}
 .num{font-family:var(--display);font-size:34px;color:var(--brand-text);text-align:center}
 .pn{font-weight:600}
 .pp{font-size:13px;color:var(--muted)}
-.pg{font-family:var(--display);font-size:30px;text-align:right;line-height:1}
-.pg small{display:block;font-family:var(--body);font-size:12px;color:var(--muted)}
+.posgroup{display:flex;align-items:baseline;gap:8px;margin:20px 0 8px}
+.posgroup:first-child{margin-top:0}
+.posgroup h3{margin:0}
+.posgroup span{font-size:13px;color:var(--muted)}
 
 /* Rivales */
 .lock{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:14px}
@@ -335,9 +337,29 @@ function renderStats(){
   $("#statbox").innerHTML=html;
 }
 
+var POSG=[["arquero","Arqueros"],["defensor","Defensores"],["volante","Volantes"],["delantero","Delanteros"]];
+function fmtPos(p){
+  var t=String(p==null?"":p).trim();
+  if(!t)return "";
+  t=t.charAt(0).toUpperCase()+t.slice(1);
+  return t.replace(/\(([^)]*)\)/g,function(m,a){a=a.trim();return "("+a.charAt(0).toUpperCase()+a.slice(1)+")"});
+}
+function posGroup(p){
+  var w=String(p==null?"":p).trim().toLowerCase().split(/[\s(]/)[0];
+  for(var i=0;i<POSG.length;i++)if(POSG[i][0]===w)return i;
+  return POSG.length;
+}
 function renderSquad(){
   var ps=playerStats().sort(function(a,b){return nz(a.number)-nz(b.number)});
-  $("#plist").innerHTML=ps.map(function(p){return '<div class="player"><div class="num">'+num(p.number)+'</div><div><div class="pn">'+pname(p)+'</div><div class="pp">'+esc(p.pos)+'</div></div><div class="pg">'+p.g+'<small>goles</small></div></div>'}).join("");
+  var labels=POSG.map(function(g){return g[1]}).concat(["Sin posición"]);
+  var groups=labels.map(function(){return []});
+  ps.forEach(function(p){groups[posGroup(p.pos)].push(p)});
+  $("#plist").innerHTML=groups.map(function(g,i){
+    if(!g.length)return "";
+    return '<div class="posgroup"><h3>'+labels[i]+'</h3><span>'+g.length+'</span></div>'+g.map(function(p){
+      return '<div class="player"><div class="num">'+num(p.number)+'</div><div><div class="pn">'+pname(p)+'</div><div class="pp">'+esc(fmtPos(p.pos))+'</div></div></div>';
+    }).join("");
+  }).join("");
 }
 
 function renderFoot(){
