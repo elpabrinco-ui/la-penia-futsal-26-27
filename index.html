@@ -325,10 +325,10 @@ function playerStats(){
 
 function renderStats(){
   var s=teamStats(), ps=playerStats().sort(function(a,b){return b.g-a.g||b.a-a.a||b.pj-a.pj||nz(a.number)-nz(b.number)});
-  var top=ps[0]&&ps[0].g>0?ps[0]:null;
+  var tops=ps.filter(function(p){return p.g>0&&p.g===ps[0].g});
   var html='<div class="summary">'+[["PJ",s.p],["G",s.w],["E",s.d],["P",s.l],["GF",s.gf],["GC",s.ga],["Pts",s.pts]].map(function(x){return '<div class="stat"><b>'+x[1]+'</b><span>'+x[0]+'</span></div>'}).join("")+'</div>';
   html+='<p class="form">'+(s.form.length?'Últimos partidos: '+s.form.slice(-5).map(function(o){return '<span class="dot '+o+'">'+o+'</span>'}).join(""):'Todavía no se jugó ningún partido. Estas cifras se llenan solas desde el 7 de noviembre.')+'</p>';
-  if(top)html+='<p class="hint">Goleador: <span class="lead">'+esc(top.name)+'</span> con '+top.g+' '+(top.g===1?'gol':'goles')+'.</p>';
+  if(tops.length){var tg=tops[0].g, tl=tops.length===1?'Goleador':'Goleadores';html+='<p class="hint">'+tl+': <span class="lead">'+tops.map(function(p){return esc(short(p.name))}).join(', ')+'</span> con '+tg+' '+(tg===1?'gol':'goles')+(tops.length>1?' cada uno':'')+'.</p>'}
   html+='<h3>Jugadores</h3><div class="scroll"><table><thead><tr><th>#</th><th class="l">Jugador</th><th>PJ</th><th>Goles</th><th>Asist.</th><th>Amar.</th><th>Rojas</th></tr></thead><tbody>'+
    ps.map(function(p){return '<tr><td>'+num(p.number)+'</td><td>'+pname(p)+'</td><td>'+p.pj+'</td><td>'+p.g+'</td><td>'+p.a+'</td><td>'+p.y+'</td><td>'+p.r+'</td></tr>'}).join("")+'</tbody></table></div>';
   html+='<p class="src">PJ: partidos jugados. Los goles, asistencias y tarjetas se cargan después de cada partido.</p>';
