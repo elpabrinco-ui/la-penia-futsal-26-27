@@ -137,6 +137,7 @@ tr.me td:first-child{box-shadow:inset 4px 0 0 var(--brand-text)}
 .num{font-family:var(--display);font-size:34px;color:var(--brand-text);text-align:center}
 .pn{font-weight:600}
 .pp{font-size:13px;color:var(--muted)}
+.pos{font-size:12px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
 .posgroup{display:flex;align-items:baseline;gap:8px;margin:20px 0 8px}
 .posgroup:first-child{margin-top:0}
 .posgroup h3{margin:0}
@@ -357,7 +358,7 @@ function renderSquad(){
   $("#plist").innerHTML=groups.map(function(g,i){
     if(!g.length)return "";
     return '<div class="posgroup"><h3>'+labels[i]+'</h3><span>'+g.length+'</span></div>'+g.map(function(p){
-      return '<div class="player"><div class="num">'+num(p.number)+'</div><div><div class="pn">'+pname(p)+'</div><div class="pp">'+esc(fmtPos(p.pos))+'</div></div></div>';
+      return '<div class="player"><div class="num">'+num(p.number)+'</div><div><div class="pn">'+pname(p)+'</div><div class="pos">'+esc(p.pos==null?"":p.pos)+'</div></div></div>';
     }).join("");
   }).join("");
 }
