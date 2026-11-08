@@ -459,9 +459,9 @@
    "pos": "Delantero (volante)"
   },
   {
-   "name": "Lucas Gabriel Beltrame",
-   "number": 9,
-   "pos": "Volante (defensor)"
+   "name": "Jon Gargallo",
+   "number": null,
+   "pos": null
   },
   {
    "name": "Mariano Manuel Castorina",
@@ -517,8 +517,19 @@
  ],
  "matches": {
   "161268": {
+   "lineup": [
+    "Leonel Bartolo",
+    "Lucas Julian Morinigo",
+    "Marcos Agustin Murua",
+    "Pablo Nicolas Nuñez",
+    "Eros Marcos Salamida",
+    "Mariano Manuel Castorina",
+    "Jon Gargallo",
+    "Juan Ignacio Todisco",
+    "Walter Breuer"
+   ],
    "goals": {
-    "Juan Carlos Dante Angelini": 1,
+    "Jon Gargallo": 1,
     "Juan Ignacio Todisco": 1,
     "Marcos Agustin Murua": 1,
     "Eros Marcos Salamida": 1,
@@ -527,7 +538,7 @@
    "assists": {
     "Pablo Nicolas Nuñez": 2,
     "Mariano Manuel Castorina": 1,
-    "Juan Carlos Dante Angelini": 1,
+    "Jon Gargallo": 1,
     "Leonel Bartolo": 1
    }
   }
