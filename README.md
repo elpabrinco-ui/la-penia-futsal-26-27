@@ -30,10 +30,13 @@ Datos que se cargan en `matches["<id>"]`:
   "yellow":  {"Nombre completo": 1},
   "red":     {},
   "avail":   {"Nombre completo": "si"},
-  "mvp":     "Nombre",
+  "mvp":     "Nombre completo",
+  "kitWash": "Nombre completo",
   "note":    "Texto libre"
 }
 ```
+
+`mvp` es la figura del partido y `kitWash` quien se lleva las casacas a lavar (el reparto tiene que ser lo más parejo posible). Los dos se cuentan en Estadísticas y tienen que ser iguales a un nombre de `squad`.
 
 `avail` acepta `si`, `duda` o `no`. Los nombres tienen que ser iguales a los de `squad`.
 

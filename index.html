@@ -277,7 +277,8 @@ function matchCard(f){
   var det='<dl><dt>Día</dt><dd>'+esc(dateLong(f.date))+', '+esc(f.time)+'</dd><dt>Cancha</dt><dd><a href="'+mapsUrl(f.venue)+'" target="_blank" rel="noopener">'+esc(vname(f.venue))+'</a></dd>';
   if(m.goals&&Object.keys(m.goals).length)det+='<dt>Goles</dt><dd>'+esc(names(m.goals))+'</dd>';
   if(m.assists&&Object.keys(m.assists).length)det+='<dt>Asistencias</dt><dd>'+esc(names(m.assists))+'</dd>';
-  if(m.mvp)det+='<dt>Figura</dt><dd>'+esc(m.mvp)+'</dd>';
+  if(m.mvp)det+='<dt>Figura</dt><dd>'+esc(short(m.mvp))+'</dd>';
+  if(m.kitWash)det+='<dt>Casacas</dt><dd>'+esc(short(m.kitWash))+'</dd>';
   det+='<dt>Oficial</dt><dd><a href="'+kampUrl(f)+'" target="_blank" rel="noopener">Ver en DAI</a></dd></dl>';
   if(m.note)det+='<p class="note">'+esc(m.note)+'</p>';
   return '<details class="match"><summary>'+badge+'<div><div class="mt">'+teamHtml(f)+'</div><div class="ms">'+esc(dateShort(f.date))+(played(f)?' · '+esc(vname(f.venue)):'')+'</div></div>'+right+'</summary><div class="detail">'+det+'</div></details>';
@@ -316,10 +317,12 @@ function firstDate(){return D.fixtures.map(function(f){return f.date}).sort()[0]
 
 function playerStats(){
   var map={};
-  D.squad.forEach(function(p){map[p.name]={name:p.name,nick:p.nick,number:p.number,pos:p.pos,pj:0,g:0,a:0,y:0,r:0}});
+  D.squad.forEach(function(p){map[p.name]={name:p.name,nick:p.nick,number:p.number,pos:p.pos,pj:0,g:0,a:0,y:0,r:0,mvp:0,wash:0}});
   Object.keys(D.matches||{}).forEach(function(id){
     var m=D.matches[id];
     (m.lineup||[]).forEach(function(n){if(map[n])map[n].pj++});
+    if(m.mvp&&map[m.mvp])map[m.mvp].mvp++;
+    if(m.kitWash&&map[m.kitWash])map[m.kitWash].wash++;
     [["goals","g"],["assists","a"],["yellow","y"],["red","r"]].forEach(function(k){
       var o=m[k[0]]||{};Object.keys(o).forEach(function(n){if(map[n])map[n][k[1]]+=o[n]});
     });
@@ -333,9 +336,9 @@ function renderStats(){
   var html='<div class="summary">'+[["PJ",s.p],["G",s.w],["E",s.d],["P",s.l],["GF",s.gf],["GC",s.ga],["Pts",s.pts]].map(function(x){return '<div class="stat"><b>'+x[1]+'</b><span>'+x[0]+'</span></div>'}).join("")+'</div>';
   html+='<p class="form">'+(s.form.length?'Últimos partidos: '+s.form.slice(-5).map(function(o){return '<span class="dot '+o+'">'+o+'</span>'}).join(""):'Todavía no se jugó ningún partido. Estas cifras se llenan solas desde el 7 de noviembre.')+'</p>';
   if(tops.length){var tg=tops[0].g, tl=tops.length===1?'Goleador':'Goleadores';html+='<p class="hint">'+tl+': <span class="lead">'+tops.map(function(p){return esc(short(p.name))}).join(', ')+'</span> con '+tg+' '+(tg===1?'gol':'goles')+(tops.length>1?' cada uno':'')+'.</p>'}
-  html+='<h3>Jugadores</h3><div class="scroll"><table><thead><tr><th>#</th><th class="l">Jugador</th><th>PJ</th><th>Goles</th><th>Asist.</th><th>Amar.</th><th>Rojas</th></tr></thead><tbody>'+
-   ps.map(function(p){return '<tr><td>'+num(p.number)+'</td><td>'+pname(p)+'</td><td>'+p.pj+'</td><td>'+p.g+'</td><td>'+p.a+'</td><td>'+p.y+'</td><td>'+p.r+'</td></tr>'}).join("")+'</tbody></table></div>';
-  html+='<p class="src">PJ: partidos jugados. Los goles, asistencias y tarjetas se cargan después de cada partido.</p>';
+  html+='<h3>Jugadores</h3><div class="scroll"><table><thead><tr><th>#</th><th class="l">Jugador</th><th>PJ</th><th>Goles</th><th>Asist.</th><th>Amar.</th><th>Rojas</th><th>Figura</th><th>Casacas</th></tr></thead><tbody>'+
+   ps.map(function(p){return '<tr><td>'+num(p.number)+'</td><td>'+pname(p)+'</td><td>'+p.pj+'</td><td>'+p.g+'</td><td>'+p.a+'</td><td>'+p.y+'</td><td>'+p.r+'</td><td>'+p.mvp+'</td><td>'+p.wash+'</td></tr>'}).join("")+'</tbody></table></div>';
+  html+='<p class="src">PJ: partidos jugados. Figura: veces elegido figura del partido. Casacas: veces que se llevó las casacas a lavar. Todo se carga después de cada partido.</p>';
   $("#statbox").innerHTML=html;
 }
 
