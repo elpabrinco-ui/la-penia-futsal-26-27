@@ -59,6 +59,28 @@ La pestaña **Rivales** muestra los partidos contra cada equipo (dato público) 
 5. Si la web de DAI no responde o cambia de formato, no inventar datos: dejar el archivo como está.
 6. Después de cambiar `data.json`, guardar y subir el cambio a `main`. El sitio se publica solo.
 
+## Mensaje de convocatoria (WhatsApp)
+
+Matías pide este mensaje antes de cada partido. Formato:
+
+```
+📅 Futsal · Fecha N: DD/MM/AAAA
+⚽ Local: ...
+👕 (Conjunto ...)
+⚽ Visitante: ...
+👕 (Conjunto ...)
+⏰ HORARIO CONVOCATORIA: HH:MM
+⏰ Horario partido: HH:MM
+📍 Estadio: ...
+📍 Cancha: ...
+```
+
+- **Conjunto:** colores de `kits` (camiseta y short). Si los dos son iguales, solo uno ("Conjunto blanco"). Para La Peña se escribe "vinotinto y negro".
+- **Convocatoria:** una hora antes del partido, salvo que Matías diga otra hora.
+- **Estadio y cancha:** el nombre de la cancha de DAI se separa en estadio y cancha. `Valby Hal-3` es Estadio: Valby, Cancha: Hal-3.
+- **Holmen Hal C.** se escribe **Estadio: Holmen - Christiania** y Cancha: Hal C. El equipo conoce esa cancha como "la cancha de Christiania" y quiere ir aprendiendo el nombre real.
+- **Fecha N:** número de la fecha de la liga. Fecha 1 fue el 07/11/2026 y Fecha 2 es el 15/11/2026.
+
 ## Publicación
 
 El sitio se publica con GitHub Pages desde la rama `main`.
