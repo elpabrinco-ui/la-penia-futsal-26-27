@@ -3,7 +3,7 @@
   "team": "La Peña F.C.",
   "tournament": "DAI Futsal · Række 1",
   "season": "2026/27",
-  "updated": "2026-11-08",
+  "updated": "2026-11-15",
   "source": "https://resultater.dai-sport.dk/tms/Turneringer-og-resultater/Pulje-Komplet-Kampprogram.aspx?PuljeId=947",
   "standingsSource": "https://resultater.dai-sport.dk/tms/Turneringer-og-resultater/Pulje-Stilling.aspx?PuljeId=947"
  },
@@ -153,7 +153,10 @@
    "away": "Boldklubben Smæk",
    "venue": "Holmen Hal C.",
    "venueId": 1185,
-   "result": null
+   "result": {
+    "h": 4,
+    "a": 1
+   }
   },
   {
    "id": 161269,
@@ -164,7 +167,10 @@
    "away": "La Peña F.C.",
    "venue": "Holmen Hal C.",
    "venueId": 1185,
-   "result": null
+   "result": {
+    "h": 4,
+    "a": 6
+   }
   },
   {
    "id": 161270,
@@ -175,7 +181,10 @@
    "away": "Tiim Dennis",
    "venue": "Holmen Hal C.",
    "venueId": 1185,
-   "result": null
+   "result": {
+    "h": 5,
+    "a": 3
+   }
   },
   {
    "id": 161274,
