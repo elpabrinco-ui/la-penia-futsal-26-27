@@ -278,6 +278,8 @@ function matchCard(f){
   var det='<dl><dt>Día</dt><dd>'+esc(dateLong(f.date))+', '+esc(f.time)+'</dd><dt>Cancha</dt><dd><a href="'+mapsUrl(f.venue)+'" target="_blank" rel="noopener">'+esc(vname(f.venue))+'</a></dd>';
   if(m.goals&&Object.keys(m.goals).length)det+='<dt>Goles</dt><dd>'+esc(names(m.goals))+'</dd>';
   if(m.assists&&Object.keys(m.assists).length)det+='<dt>Asistencias</dt><dd>'+esc(names(m.assists))+'</dd>';
+  if(m.yellow&&Object.keys(m.yellow).length)det+='<dt>Amarillas</dt><dd>'+esc(names(m.yellow))+'</dd>';
+  if(m.red&&Object.keys(m.red).length)det+='<dt>Rojas</dt><dd>'+esc(names(m.red))+'</dd>';
   if(m.mvp)det+='<dt>Figura</dt><dd>'+esc(short(m.mvp))+'</dd>';
   if(m.kitWash)det+='<dt>Casacas</dt><dd>'+esc(short(m.kitWash))+'</dd>';
   det+='<dt>Oficial</dt><dd><a href="'+kampUrl(f)+'" target="_blank" rel="noopener">Ver en DAI</a></dd></dl>';
