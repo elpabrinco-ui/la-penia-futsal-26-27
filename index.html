@@ -108,6 +108,7 @@ h3{font-family:var(--display);font-weight:400;font-size:26px;margin:0 0 6px}
 .detail dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:12px 0 0}
 .detail dt{color:var(--muted)}
 .detail dd{margin:0}
+.dz{color:var(--muted);opacity:.6}
 .note{margin:10px 0 0;padding:10px 12px;background:var(--soft);border-radius:8px}
 .hint{color:var(--muted);font-size:15px;margin:0 0 14px}
 
@@ -330,6 +331,7 @@ function playerStats(){
   return Object.keys(map).map(function(k){return map[k]});
 }
 
+function dz(n){return n?n:'<span class="dz">–</span>'}
 function renderStats(){
   var s=teamStats(), ps=playerStats().sort(function(a,b){return b.g-a.g||b.a-a.a||b.pj-a.pj||nz(a.number)-nz(b.number)});
   var tops=ps.filter(function(p){return p.g>0&&p.g===ps[0].g});
@@ -337,7 +339,7 @@ function renderStats(){
   html+='<p class="form">'+(s.form.length?'Últimos partidos: '+s.form.slice(-5).map(function(o){return '<span class="dot '+o+'">'+o+'</span>'}).join(""):'Todavía no se jugó ningún partido. Estas cifras se llenan solas desde el 7 de noviembre.')+'</p>';
   if(tops.length){var tg=tops[0].g, tl=tops.length===1?'Goleador':'Goleadores';html+='<p class="hint">'+tl+': <span class="lead">'+tops.map(function(p){return esc(short(p.name))}).join(', ')+'</span> con '+tg+' '+(tg===1?'gol':'goles')+(tops.length>1?' cada uno':'')+'.</p>'}
   html+='<h3>Jugadores</h3><div class="scroll"><table><thead><tr><th>#</th><th class="l">Jugador</th><th>PJ</th><th>Goles</th><th>Asist.</th><th>Amar.</th><th>Rojas</th><th>Figura</th><th>Casacas</th></tr></thead><tbody>'+
-   ps.map(function(p){return '<tr><td>'+num(p.number)+'</td><td>'+pname(p)+'</td><td>'+p.pj+'</td><td>'+p.g+'</td><td>'+p.a+'</td><td>'+p.y+'</td><td>'+p.r+'</td><td>'+p.mvp+'</td><td>'+p.wash+'</td></tr>'}).join("")+'</tbody></table></div>';
+   ps.map(function(p){return '<tr><td>'+num(p.number)+'</td><td>'+pname(p)+'</td><td>'+p.pj+'</td><td>'+dz(p.g)+'</td><td>'+dz(p.a)+'</td><td>'+dz(p.y)+'</td><td>'+dz(p.r)+'</td><td>'+dz(p.mvp)+'</td><td>'+dz(p.wash)+'</td></tr>'}).join("")+'</tbody></table></div>';
   html+='<p class="src">PJ: partidos jugados. Figura: veces elegido figura del partido. Casacas: veces que se llevó las casacas a lavar. Todo se carga después de cada partido.</p>';
   $("#statbox").innerHTML=html;
 }
