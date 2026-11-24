@@ -534,6 +534,33 @@
   }
  ],
  "matches": {
+  "161274": {
+   "mvp": "Leonel Bartolo",
+   "kitWash": "Eros Marcos Salamida",
+   "lineup": [
+    "Eros Marcos Salamida",
+    "Juan Ignacio Todisco",
+    "Marcos Agustin Murua",
+    "Jon Gargallo",
+    "Pablo Nicolas Nuñez",
+    "Leonel Bartolo",
+    "Matias Norberto Trento",
+    "Walter Breuer",
+    "Lucas Julian Morinigo",
+    "Juan Ignacio Alesandrello",
+    "Tomas Rivero"
+   ],
+   "yellow": {},
+   "red": {},
+   "goals": {
+    "Matias Norberto Trento": 2,
+    "Tomas Rivero": 1
+   },
+   "assists": {
+    "Eros Marcos Salamida": 2,
+    "Juan Ignacio Todisco": 1
+   }
+  },
   "161269": {
    "mvp": "Eros Marcos Salamida",
    "kitWash": "Lucas Julian Morinigo",
