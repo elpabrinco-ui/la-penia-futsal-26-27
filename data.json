@@ -550,7 +550,10 @@
     "Juan Ignacio Alesandrello",
     "Tomas Rivero"
    ],
-   "yellow": {},
+   "yellow": {
+    "Marcos Agustin Murua": 1,
+    "Matias Norberto Trento": 1
+   },
    "red": {},
    "goals": {
     "Matias Norberto Trento": 2,
